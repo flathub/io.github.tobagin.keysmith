@@ -99,5 +99,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/tobagin/keysmith.git
-        tag: v1.0.1
-        commit: 048beeb708525dd7ffd20406838e8211e692e44b
+        tag: v1.0.2
+        commit: 95bc04f0b66bf2673a7ae44407585325f8406d3b

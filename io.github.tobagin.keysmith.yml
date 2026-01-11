@@ -10,7 +10,7 @@ finish-args:
   - --socket=fallback-x11
   - --socket=wayland
   - --device=dri
-  - --filesystem=~/.ssh:create
+  - --filesystem=~/.ssh
   - --talk-name=org.freedesktop.secrets
   - --talk-name=org.gnome.keyring
 cleanup:
@@ -118,4 +118,4 @@ modules:
       - type: git
         url: https://github.com/tobagin/keymaker.git
         tag: v1.1.0
-        commit: 3f08a4a4ba79904038f574b71ffbded4e0c56c8a
+        commit: 58c3779e0b71c1d259618003a86dc91153ed056c

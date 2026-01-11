@@ -118,4 +118,4 @@ modules:
       - type: git
         url: https://github.com/tobagin/keymaker.git
         tag: v1.1.0
-        commit: 58c3779e0b71c1d259618003a86dc91153ed056c
+        commit: a7ae06be35ee35b77d7dd7d3a8988640ff5d5e65

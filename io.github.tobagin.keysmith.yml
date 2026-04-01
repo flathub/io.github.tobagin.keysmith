@@ -1,6 +1,6 @@
 app-id: io.github.tobagin.keysmith
 runtime: org.gnome.Platform
-runtime-version: '49'
+runtime-version: '50'
 sdk: org.gnome.Sdk
 command: keymaker
 separate-locales: false
@@ -15,12 +15,14 @@ finish-args:
   - --talk-name=org.gnome.keyring
 cleanup:
   - /include
+  - /lib/cmake
+  - /lib/girepository-1.0
   - /lib/pkgconfig
-  - /man
+  - /share/cmake
   - /share/doc
-  - /share/gtk-doc
+  - /share/gir-1.0
   - /share/man
-  - /share/pkgconfig
+  - /share/vala
   - '*.la'
   - '*.a'
 
@@ -44,9 +46,6 @@ modules:
         url: https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.9p2.tar.gz
         sha256: 91aadb603e08cc285eddf965e1199d02585fa94d994d6cae5b41e1721e215673
     cleanup:
-      - /share/man
-      - /include
-      - /lib/pkgconfig
       - /bin/sshd*
       - /libexec/sftp-server
       - /libexec/ssh-keysign
@@ -64,12 +63,6 @@ modules:
         url: https://github.com/fukuchi/libqrencode.git
         tag: v4.1.1
         commit: 715e29fd4cd71b6e452ae0f4e36d917b43122ce8
-    cleanup:
-      - /include
-      - /lib/pkgconfig
-      - /share/man
-      - '*.la'
-      - '*.a'
 
   - name: zbar
     buildsystem: simple
@@ -83,53 +76,7 @@ modules:
         url: https://github.com/mchehab/zbar.git
         tag: 0.23.93
         commit: bb05ec54eec57f8397cb13fb9161372a281a1219
-    cleanup:
-      - /include
-      - /lib/pkgconfig
-      - /share/man
-      - '*.la'
-      - '*.a'
 
-  - name: libsecret
-    buildsystem: meson
-    config-opts:
-      - -Dbash_completion=disabled
-      - -Dmanpage=false
-      - -Dintrospection=true
-    sources:
-      - type: git
-        url: https://gitlab.gnome.org/GNOME/libsecret.git
-        tag: 0.21.7
-        commit: 0936f740c02b60f02657729cd99f581db4517a41
-    cleanup:
-      - /include
-      - /lib/pkgconfig
-      - /share/doc
-      - /share/man
-      - '*.la'
-      - '*.a' 
-
-  - name: libsoup
-    buildsystem: meson
-    config-opts:
-      - -Dintrospection=enabled
-      - -Dvapi=enabled
-      - -Ddocs=disabled
-      - -Dtests=false
-      - -Dsysprof=disabled
-    sources:
-      - type: git
-        url: https://gitlab.gnome.org/GNOME/libsoup.git
-        tag: 3.6.5
-        commit: 766e17528251c9b696a6076300ac61adc95536ac
-    cleanup:
-      - /include
-      - /lib/pkgconfig
-      - /share/doc
-      - /share/man
-      - '*.la'
-      - '*.a' 
-      
   - name: simdutf
     buildsystem: cmake
     config-opts:
@@ -140,10 +87,6 @@ modules:
         url: https://github.com/simdutf/simdutf.git
         tag: v8.0.0
         commit: 7f3757fba1b426e7f583011ba7bc4e700a8fbb1a
-    cleanup:
-      - /include
-      - /lib/pkgconfig
-      - /lib/cmake
 
   - name: fast_float
     buildsystem: cmake
@@ -155,9 +98,6 @@ modules:
         url: https://github.com/fastfloat/fast_float.git
         tag: v8.2.3
         commit: 01ce95dfe46abccf3264fbccf9f5139ea9016cd2
-    cleanup:
-      - /include
-      - /lib/cmake
 
   - name: vte
     buildsystem: meson
@@ -174,12 +114,6 @@ modules:
         commit: 85e37ce6152616807b2307ab050899710cce8398
     cleanup:
       - /etc
-      - /include
-      - /lib/pkgconfig
-      - /share/gtk-doc
-      - /share/vala
-      - '*.la'
-      - '*.a'
 
   - name: keymaker
     buildsystem: meson
